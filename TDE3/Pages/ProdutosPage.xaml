@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TDE3.Pages.ProdutosPage"
+             Title="Cadastro de Produtos"
+             BackgroundColor="#F4F7FC">
+
+    <Grid RowDefinitions="Auto,*" Padding="20" RowSpacing="15">
+
+        <VerticalStackLayout Spacing="10">
+
+            <Label Text="Cadastro de Produtos"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="#245A9C"
+                   HorizontalOptions="Center"/>
+
+            <Entry x:Name="txtNomeProduto"
+                   Placeholder="Nome do produto"/>
+
+            <Entry x:Name="txtTipo"
+                   Placeholder="Tipo do produto"/>
+
+            <Entry x:Name="txtPreco"
+                   Placeholder="Preço"
+                   Keyboard="Numeric"/>
+
+            <Entry x:Name="txtEstoque"
+                   Placeholder="Quantidade em estoque"
+                   Keyboard="Numeric"/>
+
+            <Button Text="Salvar Produto"
+                    Clicked="SalvarProduto"
+                    BackgroundColor="#4285C5"
+                    TextColor="White"/>
+
+            <Button Text="Limpar Campos"
+                    Clicked="LimparCampos"
+                    BackgroundColor="#777777"
+                    TextColor="White"/>
+
+        </VerticalStackLayout>
+
+        <CollectionView x:Name="listaProdutos"
+                        Grid.Row="1"
+                        SelectionMode="Single"
+                        SelectionChanged="SelecionarProduto">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="0,5"
+                           Padding="10"
+                           BackgroundColor="White"
+                           BorderColor="#DDDDDD">
+
+                        <VerticalStackLayout Spacing="5">
+
+                            <Label Text="{Binding NomeProduto}"
+                                   FontAttributes="Bold"
+                                   TextColor="Black"/>
+
+                            <Label Text="{Binding Tipo}"
+                                   TextColor="#555555"/>
+
+                            <Label Text="{Binding Preco, StringFormat='R$ {0:F2}'}"
+                                   TextColor="#555555"/>
+
+                            <Label Text="{Binding QtdEstoque, StringFormat='Estoque: {0}'}"
+                                   TextColor="#555555"/>
+
+                            <Button Text="Excluir"
+                                    Clicked="ExcluirProduto"
+                                    CommandParameter="{Binding .}"
+                                    BackgroundColor="#D9534F"
+                                    TextColor="White"/>
+
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+
+</ContentPage>

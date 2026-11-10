@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TDE3.Pages.ComprasPage"
+             Title="Compras"
+             BackgroundColor="#F4F7FC">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="12">
+
+            <Label Text="Cadastro de Compras"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="#245A9C"
+                   HorizontalOptions="Center"/>
+
+            <Label Text="Cliente"
+                   FontAttributes="Bold"
+                   TextColor="#333333"/>
+
+            <Picker x:Name="pickerCliente"
+                    Title="Selecione o cliente"
+                    ItemDisplayBinding="{Binding Nome}"/>
+
+            <Label Text="Data da compra"
+                   TextColor="#333333"/>
+
+            <DatePicker x:Name="dataCompra"/>
+
+            <Button Text="Salvar Compra"
+                    Clicked="SalvarCompra"
+                    BackgroundColor="#4285C5"
+                    TextColor="White"/>
+
+            <Button Text="Nova Compra"
+                    Clicked="NovaCompra"
+                    BackgroundColor="#777777"
+                    TextColor="White"/>
+
+            <Label x:Name="lblCompra"
+                   Text="Nenhuma compra selecionada"
+                   TextColor="#245A9C"
+                   FontAttributes="Bold"/>
+
+            <Label Text="Itens da Compra"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="#245A9C"/>
+
+            <Picker x:Name="pickerProduto"
+                    Title="Selecione um produto"
+                    ItemDisplayBinding="{Binding NomeProduto}"/>
+
+            <Entry x:Name="txtQuantidade"
+                   Placeholder="Quantidade"
+                   Keyboard="Numeric"/>
+
+            <Button Text="Adicionar / Atualizar Item"
+                    Clicked="SalvarItem"
+                    BackgroundColor="#4285C5"
+                    TextColor="White"/>
+
+            <Button Text="Limpar Item"
+                    Clicked="LimparItem"
+                    BackgroundColor="#777777"
+                    TextColor="White"/>
+
+            <Label Text="Produtos desta compra"
+                   FontAttributes="Bold"
+                   TextColor="#333333"/>
+
+            <VerticalStackLayout x:Name="listaItens"
+                                 Spacing="8"
+                                 BindableLayout.ItemsSource="{Binding Itens}">
+
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Border BackgroundColor="White"
+                                Stroke="#DDDDDD"
+                                StrokeThickness="1"
+                                Padding="10">
+
+                            <VerticalStackLayout Spacing="5">
+
+                                <Label Text="{Binding CodigoProduto, StringFormat='Produto: {0}'}"
+                                       TextColor="Black"/>
+
+                                <Label Text="{Binding Quantidade, StringFormat='Quantidade: {0}'}"
+                                       TextColor="Black"/>
+
+                                <Label Text="{Binding ValorParcial, StringFormat='Valor: R$ {0:F2}'}"
+                                       TextColor="Black"/>
+
+                                <HorizontalStackLayout Spacing="10">
+
+                                    <Button Text="Editar"
+                                            Clicked="EditarItem"
+                                            CommandParameter="{Binding .}"
+                                            BackgroundColor="#4285C5"
+                                            TextColor="White"/>
+
+                                    <Button Text="Excluir"
+                                            Clicked="ExcluirItem"
+                                            CommandParameter="{Binding .}"
+                                            BackgroundColor="#D9534F"
+                                            TextColor="White"/>
+
+                                </HorizontalStackLayout>
+
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+
+            <Label x:Name="lblTotal"
+                   Text="Total: R$ 0,00"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="#245A9C"/>
+
+            <Label Text="Compras Cadastradas"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="#245A9C"
+                   Margin="0,15,0,0"/>
+
+            <VerticalStackLayout x:Name="listaCompras"
+                                 Spacing="8"
+                                 BindableLayout.ItemsSource="{Binding Compras}">
+
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Border BackgroundColor="White"
+                                Stroke="#DDDDDD"
+                                Padding="10">
+
+                            <VerticalStackLayout Spacing="6">
+
+                                <Label Text="{Binding CodigoCompra, StringFormat='Compra Nº {0}'}"
+                                       FontAttributes="Bold"
+                                       TextColor="Black"/>
+
+                                <Label Text="{Binding ValorTotal, StringFormat='Total: R$ {0:F2}'}"
+                                       TextColor="#555555"/>
+
+                                <HorizontalStackLayout Spacing="10">
+
+                                    <Button Text="Abrir"
+                                            Clicked="AbrirCompra"
+                                            CommandParameter="{Binding .}"
+                                            BackgroundColor="#4285C5"
+                                            TextColor="White"/>
+
+                                    <Button Text="Excluir"
+                                            Clicked="ExcluirCompra"
+                                            CommandParameter="{Binding .}"
+                                            BackgroundColor="#D9534F"
+                                            TextColor="White"/>
+
+                                </HorizontalStackLayout>
+
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

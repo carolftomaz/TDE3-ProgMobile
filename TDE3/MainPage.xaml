@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TDE3.MainPage"
+             Title="Menu Principal"
+             BackgroundColor="#F4F7FC">
+
+    <VerticalStackLayout Padding="25"
+                         Spacing="20"
+                         VerticalOptions="Center">
+
+        <Label Text="Sistema de Compras"
+               FontSize="28"
+               FontAttributes="Bold"
+               TextColor="#245A9C"
+               HorizontalOptions="Center"/>
+
+        <Label Text="Selecione uma opção"
+               FontSize="16"
+               TextColor="#555555"
+               HorizontalOptions="Center"/>
+
+        <Button Text="Cadastro de Clientes"
+                Clicked="AbrirClientes"
+                BackgroundColor="#4285C5"
+                TextColor="White"
+                HeightRequest="55"
+                CornerRadius="12"/>
+
+        <Button Text="Cadastro de Produtos"
+                Clicked="AbrirProdutos"
+                BackgroundColor="#4285C5"
+                TextColor="White"
+                HeightRequest="55"
+                CornerRadius="12"/>
+
+        <Button Text="Compras"
+                Clicked="AbrirCompras"
+                BackgroundColor="#4285C5"
+                TextColor="White"
+                HeightRequest="55"
+                CornerRadius="12"/>
+
+    </VerticalStackLayout>
+
+</ContentPage>

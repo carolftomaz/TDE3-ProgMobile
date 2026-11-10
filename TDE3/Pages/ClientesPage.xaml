@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TDE3.Pages.ClientesPage"
+             Title="Cadastro de Clientes"
+             BackgroundColor="#F4F7FC">
+
+    <Grid RowDefinitions="Auto,*" Padding="20" RowSpacing="15">
+
+        <VerticalStackLayout Spacing="10">
+
+            <Label Text="Cadastro de Clientes"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="#245A9C"
+                   HorizontalOptions="Center"/>
+
+            <Entry x:Name="txtNome"
+                   Placeholder="Nome do cliente"/>
+
+            <Entry x:Name="txtRG"
+                   Placeholder="RG"
+                   Keyboard="Numeric"/>
+
+            <Entry x:Name="txtTelefone"
+                   Placeholder="Telefone"
+                   Keyboard="Telephone"/>
+
+            <Button Text="Salvar Cliente"
+                    Clicked="SalvarCliente"
+                    BackgroundColor="#4285C5"
+                    TextColor="White"/>
+
+            <Button Text="Limpar Campos"
+                    Clicked="LimparCampos"
+                    BackgroundColor="#777777"
+                    TextColor="White"/>
+
+        </VerticalStackLayout>
+
+        <CollectionView x:Name="listaClientes"
+                        Grid.Row="1"
+                        SelectionMode="Single"
+                        SelectionChanged="SelecionarCliente">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="0,5"
+                           Padding="10"
+                           BackgroundColor="White"
+                           BorderColor="#DDDDDD">
+
+                        <VerticalStackLayout Spacing="5">
+
+                            <Label Text="{Binding Nome}"
+                                   FontAttributes="Bold"
+                                   TextColor="Black"/>
+
+                            <Label Text="{Binding Telefone}"
+                                   TextColor="#555555"/>
+
+                            <Button Text="Excluir"
+                                    Clicked="ExcluirCliente"
+                                    CommandParameter="{Binding .}"
+                                    BackgroundColor="#D9534F"
+                                    TextColor="White"/>
+
+                        </VerticalStackLayout>
+
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </Grid>
+
+</ContentPage>
